@@ -1,0 +1,10 @@
+﻿{
+  "Descriptor": {
+    "UId": "f0e07029-3306-45cb-856d-5387139eb5a0",
+    "Name": "UsrApp_jnljieo",
+    "Type": 1,
+    "Maintainer": "Customer",
+    "ProjectPath": "Files/UsrApp_jnljieo.csproj",
+    "DependsOn": []
+  }
+}

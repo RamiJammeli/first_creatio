@@ -3,6 +3,9 @@
 	<Group Type="String">
 		<Items>
 			<Item Name="Caption" Value="Realty FreedomUI form page" />
+			<Item Name="LocalizableStrings.addRecord_1ol1lkp_caption.Value" Value="Add new" />
+			<Item Name="LocalizableStrings.addRecord_8gxi56s_caption.Value" Value="Add new" />
+			<Item Name="LocalizableStrings.Button_h11q9e9_caption.Value" Value="Push" />
 		</Items>
 	</Group>
 </Resources>

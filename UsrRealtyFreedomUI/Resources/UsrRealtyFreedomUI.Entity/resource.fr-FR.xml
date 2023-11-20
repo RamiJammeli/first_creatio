@@ -4,6 +4,7 @@
 		<Items>
 			<Item Name="Caption" Value="Realty FreedomUI" />
 			<Item Name="Columns.UsrName.Caption" Value="Nom" />
+			<Item Name="Columns.UsrPrice.Caption" Value="Prix , Euro" />
 		</Items>
 	</Group>
 </Resources>

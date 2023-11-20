@@ -3,7 +3,12 @@
 	<Group Type="String">
 		<Items>
 			<Item Name="Caption" Value="Realty FreedomUI" />
+			<Item Name="Columns.UsrArea.Caption" Value="Area" />
+			<Item Name="Columns.UsrComment.Caption" Value="Comment" />
 			<Item Name="Columns.UsrName.Caption" Value="Name" />
+			<Item Name="Columns.UsrOffer.Caption" Value="Offer Type" />
+			<Item Name="Columns.UsrPrice.Caption" Value="Price, USD" />
+			<Item Name="Columns.UsrType.Caption" Value="Type" />
 		</Items>
 	</Group>
 </Resources>

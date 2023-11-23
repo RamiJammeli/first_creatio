@@ -4,7 +4,11 @@
 		<Items>
 			<Item Name="Caption" Value="Realty FreedomUI" />
 			<Item Name="Columns.UsrArea.Caption" Value="Area" />
+			<Item Name="Columns.UsrCity.Caption" Value="City" />
+			<Item Name="Columns.UsrComission.Caption" Value="Commission" />
 			<Item Name="Columns.UsrComment.Caption" Value="Comment" />
+			<Item Name="Columns.UsrCountry.Caption" Value="Country" />
+			<Item Name="Columns.UsrManager.Caption" Value="Manager" />
 			<Item Name="Columns.UsrName.Caption" Value="Name" />
 			<Item Name="Columns.UsrOffer.Caption" Value="Offer Type" />
 			<Item Name="Columns.UsrPrice.Caption" Value="Price, USD" />

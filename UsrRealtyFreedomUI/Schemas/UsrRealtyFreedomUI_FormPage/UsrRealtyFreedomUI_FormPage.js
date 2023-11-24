@@ -1,4 +1,3 @@
-/* jshint esversion : 11 */
 define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/()/**SCHEMA_ARGS*/ {
 	return {
 		viewConfigDiff: /**SCHEMA_VIEW_CONFIG_DIFF*/[
@@ -121,7 +120,7 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 					"type": "crt.NumberInput",
 					"label": "$Resources.Strings.NumberAttribute_xa60yj5",
 					"labelPosition": "auto",
-					"control": "$NumberAttribute_xa60yj5"					
+					"control": "$NumberAttribute_xa60yj5"
 				},
 				"parentName": "SideAreaProfileContainer",
 				"propertyName": "items",
@@ -605,11 +604,31 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 					"NumberAttribute_xa60yj5": {
 						"modelConfig": {
 							"path": "PDS.UsrPrice"
+						},
+						/**/
+						"validators": {
+							"MySuperValidator": {
+								"type": "usr.DGValidator",
+								"params": {
+									"minValue": 1000,
+									"message": "#ResourceString(PriceCannotBeLess)#"
+								}
+							}
 						}
+						/* */
 					},
 					"NumberAttribute_wv5iluv": {
 						"modelConfig": {
 							"path": "PDS.UsrArea"
+						},
+						"validators": {
+							"MySuperValidator": {
+								"type": "usr.DGValidator",
+								"params": {
+									"minValue": 10,
+									"message": "#ResourceString(AreaCannotBeLess)#"
+								}
+							}
 						}
 					},
 					"LookupAttribute_sf6pav3": {
@@ -713,27 +732,32 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 					var price = await request.$context.NumberAttribute_xa60yj5;
 
 					this.console.log("Price = " + price);
+					
+					if(price === 2000){
+						request.$context.enableAttributeValidator('NumberAttribute_xa60yj5', 'required');
+					}else{
+						request.$context.disableAttributeValidator('NumberAttribute_xa60yj5', 'required');
+					}
 
 					/* Call the next handler if it exists and return its result. */
 
 					return next?.handle(request);
 				}
-				},
-				
-				{
+			},
+
+			{
 
 				request: "crt.HandleViewModelAttributeChangeRequest",
 				/* Implementation of the custom query handler. */
 				handler: async (request, next) => {
 					console.log("***********" + request.attributeName);
-					if(request.attributeName == "NumberAttribute_xa60yj5" || request.attributeName == "UsrOfferUsrCommissionPercent")
-					{
-					var price = await request.$context.NumberAttribute_xa60yj5;
-					this.console.log("Price = " + price);
-					
-					var commissionPercent = await request.$context.UsrOfferUsrCommissionPercent;
-					
-					request.$context.NumberAttribute_prhdr42 = price * commissionPercent / 100;
+					if (request.attributeName == "NumberAttribute_xa60yj5" || request.attributeName == "UsrOfferUsrCommissionPercent") {
+						var price = await request.$context.NumberAttribute_xa60yj5;
+						this.console.log("Price = " + price);
+
+						var commissionPercent = await request.$context.UsrOfferUsrCommissionPercent;
+
+						request.$context.NumberAttribute_prhdr42 = price * commissionPercent / 100;
 					}
 
 					/* Call the next handler if it exists and return its result. */
@@ -746,6 +770,37 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 
 		]/**SCHEMA_HANDLERS*/,
 		converters: /**SCHEMA_CONVERTERS*/{}/**SCHEMA_CONVERTERS*/,
-		validators: /**SCHEMA_VALIDATORS*/{}/**SCHEMA_VALIDATORS*/
+		validators: {
+			"usr.DGValidator": {
+				validator: function (config) {
+					return function (control) {
+						let value = control.value;
+						let minValue = config.minValue;
+						let valueIsCorrect = value >= minValue;
+						var result;
+						if (valueIsCorrect) {
+							result = null;
+						} else {
+							result = {
+								"usr.DGValidator": {
+									message: config.message
+								}
+							};
+						}
+						return result;
+					};
+				},
+				params: [
+					{
+						name: "minValue"
+					},
+					{
+						name: "message"
+					}
+				],
+				async: false
+			}
+		}
+
 	};
 });

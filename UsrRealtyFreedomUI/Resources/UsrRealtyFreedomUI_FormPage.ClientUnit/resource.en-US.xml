@@ -8,6 +8,7 @@
 			<Item Name="LocalizableStrings.addRecord_8gxi56s_caption.Value" Value="Add new" />
 			<Item Name="LocalizableStrings.addRecord_lknhi5c_caption.Value" Value="Add new" />
 			<Item Name="LocalizableStrings.addRecord_zfiixdv_caption.Value" Value="Add new" />
+			<Item Name="LocalizableStrings.AreaCannotBeLess.Value" Value="Area cannot be less than 10" />
 			<Item Name="LocalizableStrings.Button_h11q9e9_caption.Value" Value="Push" />
 			<Item Name="LocalizableStrings.ExpansionPanel_g1ge01j_title.Value" Value="Expanded list" />
 			<Item Name="LocalizableStrings.GridDetailAddBtn_q529ron_caption.Value" Value="New" />
@@ -17,6 +18,7 @@
 			<Item Name="LocalizableStrings.GridDetailSearchFilter_qahdgj1_placeholder.Value" Value="Search" />
 			<Item Name="LocalizableStrings.GridDetailSettingsBtn_wsw428k_caption.Value" Value="Actions" />
 			<Item Name="LocalizableStrings.NumberInput_lkvq4ze_label.Value" Value="Number" />
+			<Item Name="LocalizableStrings.PriceCannotBeLess.Value" Value="Price cannot be less than 1000" />
 		</Items>
 	</Group>
 </Resources>

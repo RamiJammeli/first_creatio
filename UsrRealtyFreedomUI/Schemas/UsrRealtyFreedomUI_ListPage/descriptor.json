@@ -8,6 +8,7 @@
       "Name": "ListFreedomTemplate"
     },
     "ManagerName": "ClientUnitSchemaManager",
-    "Caption": "Realty FreedomUI list page"
+    "Caption": "Realty FreedomUI list page",
+    "DependsOn": []
   }
 }

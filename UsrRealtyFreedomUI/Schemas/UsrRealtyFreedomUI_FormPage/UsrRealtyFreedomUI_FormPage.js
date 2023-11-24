@@ -70,6 +70,46 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 			},
 			{
 				"operation": "insert",
+				"name": "Button_b30usnp",
+				"values": {
+					"type": "crt.Button",
+					"caption": "#ResourceString(Button_b30usnp_caption)#",
+					"color": "default",
+					"disabled": false,
+					"size": "medium",
+					"iconPosition": "left-icon",
+					"visible": true,
+					"icon": "actions-button-icon",
+					"menuItems": [],
+					"clickMode": "menu"
+				},
+				"parentName": "CardToggleContainer",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "MenuItem_kzbg8vc",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "#ResourceString(MenuItem_kzbg8vc_caption)#",
+					"visible": true,
+					"clicked": {
+						"request": "crt.RunBusinessProcessRequest",
+						"params": {
+							"processName": "UsrCalculateAveragePriceFreedom",
+							"processRunType": "ForTheSelectedPage",
+							"recordIdProcessParameterName": "RecordIdParameter"
+						}
+					},
+					"icon": "pencil-button-icon"
+				},
+				"parentName": "Button_b30usnp",
+				"propertyName": "menuItems",
+				"index": 0
+			},
+			{
+				"operation": "insert",
 				"name": "PushButton",
 				"values": {
 					"type": "crt.Button",
@@ -82,9 +122,10 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 					"clicked": {
 						"request": "usr.PushButton"
 					},
-					"clickMode": "default"
+					"clickMode": "default",
+					"layoutConfig": {}
 				},
-				"parentName": "MainHeaderBottom",
+				"parentName": "CardToggleContainer",
 				"propertyName": "items",
 				"index": 1
 			},
@@ -445,7 +486,10 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 					"color": "default",
 					"size": "medium",
 					"clicked": {
-						"request": "crt.CreateRecordRequest"
+						"request": "crt.CreateRecordRequest",
+						"params": {
+							"entityName": "UsrRealtyVisitFreedomUI"
+						}
 					}
 				},
 				"parentName": "FlexContainer_g9k6vu1",
@@ -467,7 +511,8 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 						"params": {
 							"config": {
 								"loadType": "reload"
-							}
+							},
+							"dataSourceName": "GridDetail_iaac4fnDS"
 						}
 					}
 				},
@@ -502,7 +547,10 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 					"color": "default",
 					"size": "medium",
 					"clicked": {
-						"request": "crt.ExportDataGridToExcelRequest"
+						"request": "crt.ExportDataGridToExcelRequest",
+						"params": {
+							"viewName": "GridDetail_iaac4fn"
+						}
 					}
 				},
 				"parentName": "GridDetailSettingsBtn_wsw428k",
@@ -519,7 +567,10 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 					"color": "default",
 					"size": "medium",
 					"clicked": {
-						"request": "crt.ImportDataRequest"
+						"request": "crt.ImportDataRequest",
+						"params": {
+							"entitySchemaName": "UsrRealtyVisitFreedomUI"
+						}
 					}
 				},
 				"parentName": "GridDetailSettingsBtn_wsw428k",
@@ -532,7 +583,10 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 				"values": {
 					"type": "crt.SearchFilter",
 					"placeholder": "#ResourceString(GridDetailSearchFilter_qahdgj1_placeholder)#",
-					"iconOnly": true
+					"iconOnly": true,
+					"targetAttributes": [
+						"GridDetail_iaac4fn"
+					]
 				},
 				"parentName": "FlexContainer_g9k6vu1",
 				"propertyName": "items",
@@ -582,7 +636,31 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 					},
 					"items": "$GridDetail_iaac4fn",
 					"visible": true,
-					"fitContent": true
+					"fitContent": true,
+					"primaryColumnName": "GridDetail_iaac4fnDS_Id",
+					"columns": [
+						{
+							"id": "bdb6ab6c-263f-de3b-c2be-ab7d86a75c93",
+							"code": "GridDetail_iaac4fnDS_UsrComment",
+							"caption": "#ResourceString(GridDetail_iaac4fnDS_UsrComment)#",
+							"dataValueType": 28
+						},
+						{
+							"id": "5e7d0133-293e-3dd4-8f1b-ef7d33fda5ff",
+							"code": "GridDetail_iaac4fnDS_UsrPotentialCustomer",
+							"path": "UsrPotentialCustomer",
+							"caption": "#ResourceString(GridDetail_iaac4fnDS_UsrPotentialCustomer)#",
+							"dataValueType": 10,
+							"referenceSchemaName": "Contact"
+						},
+						{
+							"id": "9851778f-ec44-5756-a61f-18c69e201789",
+							"code": "GridDetail_iaac4fnDS_UsrVisitDateTime",
+							"path": "UsrVisitDateTime",
+							"caption": "#ResourceString(GridDetail_iaac4fnDS_UsrVisitDateTime)#",
+							"dataValueType": 7
+						}
+					]
 				},
 				"parentName": "GridContainer_uh42a4l",
 				"propertyName": "items",
@@ -605,7 +683,6 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 						"modelConfig": {
 							"path": "PDS.UsrPrice"
 						},
-						/**/
 						"validators": {
 							"MySuperValidator": {
 								"type": "usr.DGValidator",
@@ -615,7 +692,6 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 								}
 							}
 						}
-						/* */
 					},
 					"NumberAttribute_wv5iluv": {
 						"modelConfig": {
@@ -670,6 +746,36 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 						"modelConfig": {
 							"path": "PDS.UsrOfferUsrCommissionPercent"
 						}
+					},
+					"GridDetail_iaac4fn": {
+						"isCollection": true,
+						"modelConfig": {
+							"path": "GridDetail_iaac4fnDS"
+						},
+						"viewModelConfig": {
+							"attributes": {
+								"GridDetail_iaac4fnDS_UsrComment": {
+									"modelConfig": {
+										"path": "GridDetail_iaac4fnDS.UsrComment"
+									}
+								},
+								"GridDetail_iaac4fnDS_UsrPotentialCustomer": {
+									"modelConfig": {
+										"path": "GridDetail_iaac4fnDS.UsrPotentialCustomer"
+									}
+								},
+								"GridDetail_iaac4fnDS_UsrVisitDateTime": {
+									"modelConfig": {
+										"path": "GridDetail_iaac4fnDS.UsrVisitDateTime"
+									}
+								},
+								"GridDetail_iaac4fnDS_Id": {
+									"modelConfig": {
+										"path": "GridDetail_iaac4fnDS.Id"
+									}
+								}
+							}
+						}
 					}
 				}
 			},
@@ -711,6 +817,24 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 							}
 						},
 						"scope": "page"
+					},
+					"GridDetail_iaac4fnDS": {
+						"type": "crt.EntityDataSource",
+						"scope": "viewElement",
+						"config": {
+							"entitySchemaName": "UsrRealtyVisitFreedomUI",
+							"attributes": {
+								"UsrComment": {
+									"path": "UsrComment"
+								},
+								"UsrPotentialCustomer": {
+									"path": "UsrPotentialCustomer"
+								},
+								"UsrVisitDateTime": {
+									"path": "UsrVisitDateTime"
+								}
+							}
+						}
 					}
 				}
 			}
@@ -732,10 +856,10 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 					var price = await request.$context.NumberAttribute_xa60yj5;
 
 					this.console.log("Price = " + price);
-					
-					if(price === 2000){
+
+					if (price === 2000) {
 						request.$context.enableAttributeValidator('NumberAttribute_xa60yj5', 'required');
-					}else{
+					} else {
 						request.$context.disableAttributeValidator('NumberAttribute_xa60yj5', 'required');
 					}
 
@@ -801,6 +925,5 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 				async: false
 			}
 		}
-
 	};
 });

@@ -8,6 +8,7 @@
       "Name": "BaseLookup"
     },
     "ManagerName": "EntitySchemaManager",
-    "Caption": "Realty offer ClassicUI"
+    "Caption": "Realty offer ClassicUI",
+    "DependsOn": []
   }
 }

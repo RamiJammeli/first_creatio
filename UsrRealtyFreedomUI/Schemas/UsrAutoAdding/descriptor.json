@@ -1,0 +1,10 @@
+﻿{
+  "Descriptor": {
+    "UId": "d6c64609-4e1c-4158-a608-22a1f099ed44",
+    "Name": "UsrAutoAdding",
+    "ModifiedOnUtc": "\/Date(1701018209000)\/",
+    "ManagerName": "ProcessSchemaManager",
+    "Caption": "ZAddVisit",
+    "DependsOn": []
+  }
+}

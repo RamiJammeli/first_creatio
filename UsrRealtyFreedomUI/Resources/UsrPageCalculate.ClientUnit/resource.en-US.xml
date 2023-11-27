@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="Calcul Price" />
+			<Item Name="Parameters.07a83774-47e1-b69e-3157-f5762cd41c58.Caption" Value="Average price, USD" />
+			<Item Name="Parameters.7a2a8b44-d4a1-acea-e52a-426dbd5bee0f.Caption" Value="Sql Text" />
+		</Items>
+	</Group>
+</Resources>

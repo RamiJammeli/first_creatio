@@ -2,6 +2,7 @@
 <Resources Culture="es-ES">
 	<Group Type="String">
 		<Items>
+			<Item Name="BaseElements.PreconfiguredPageUserTask1.Parameters.Title.Value" Value="New edit page" />
 			<Item Name="Caption" Value="Calculate Average Price Process" />
 		</Items>
 	</Group>
